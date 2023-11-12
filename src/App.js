@@ -22,6 +22,10 @@ function App() {
     setItems(items.filter(item => item.id !== id))
   }
 
+  const clearItemsList = () => {
+    setItems([])
+  }
+
   const squareCheck = (id) => {
     setItems(items.map(item =>
       item.id === id ? { ...item, packed: !item.packed } : item
@@ -34,8 +38,8 @@ function App() {
     <div className="app">
       <Logo />
       <Form setOption={setOption} option={option} setInput={setInput} input={input} addToItems={addToItems} />
-      <PackingList initialItems={items} deleteItem={deleteItem} squareCheck={squareCheck} />
-      <Stats />
+      <PackingList initialItems={items} deleteItem={deleteItem} squareCheck={squareCheck} clearItemsList={clearItemsList} />
+      <Stats items={items} />
     </div>
   );
 }
